@@ -8,7 +8,7 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "build": "webpack --progress"
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && webpack --progress"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/jeonghwan-kim/lecture-frontend-dev-env/issues"
   },
-  "homepage": "https://github.com/jeonghwan-kim/lecture-frontend-dev-env#readme"
+  "homepage": "https://github.com/jeonghwan-kim/lecture-frontend-dev-env#readme",
+  "dependencies": {
+    "css-loader": "^2.1.1",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1"
+  }
 }
