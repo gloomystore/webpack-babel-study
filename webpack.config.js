@@ -9,6 +9,14 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve('./dist'),
   },
+  // path: path.resolve(__dirname, 'build'),
+  //   filename: '[name].js',
+  //   publicPath: '/',
+  // assetModuleFilename: pathData => {
+  //   const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
+  //   return `${filepath}/[name].[hash][ext][query]`;
+  // },
+  
   module:{
     rules: [
       {
@@ -24,7 +32,8 @@ module.exports = {
         options:{
           limit:20000,
           publicPath:'./dist/',
-          name:'[name].[ext]?[hash]'
+          name:'[name].[ext]?[hash]',
+          esModule: false
         }
       },
     ]
