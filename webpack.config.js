@@ -1,9 +1,14 @@
 const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const childProcess = require('child_process');
 
 module.exports = {
   mode: "development",
   entry: {
-    main: "./src/app.js"
+    main: "./src/app.js",
   },
   output: {
     filename: "[name].js",
@@ -13,7 +18,10 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [
+          MiniCssExtractPlugin.loader, 
+          "css-loader"
+        ]
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
@@ -24,7 +32,22 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.BannerPlugin({
+      banner: 'this is fucking banner!'+ 'Author : '+childProcess.execSync('git config user.name')
+    }),
+    new HtmlWebpackPlugin({
+      template:'./src/index.html',
+      templateParameters:{
+        BABO:process.env.NODE_ENV === 'development' ? 'development0000' : 'babo'
+      },
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename:'[name].css'
+    }),
+  ],
   /**
    * TODO: 아래 플러그인을 추가해서 번들 결과를 만들어 보세요.
    * 1. BannerPlugin: 결과물에 빌드 시간을 출력하세요.
