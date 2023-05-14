@@ -1,1 +1,17 @@
-// TODO: eslint를 구성해 보세요. 
+module.exports = {
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+      'no-extra-semi':'error',
+      "no-unused-vars": 'warn'
+    }
+}
