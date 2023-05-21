@@ -8,7 +8,7 @@ app.use(morgan("dev"));
 
 // app.use(express.static(path.join(__dirname, "../dist")));
 
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 8082;
 const keywords = [
   { keyword: "이탈리아" },
   { keyword: "세프의요리" },
@@ -78,6 +78,6 @@ app.get("/api/search", (req, res) => {
 //   res.sendFile(path.join(__dirname, "../dist/index.html"));
 // });
 
-app.listen(port, () => {
+app.listen(port, '192.168.0.144', () => {
   console.log(`서버가 구동되었습니다. localhost:${port}`);
 });

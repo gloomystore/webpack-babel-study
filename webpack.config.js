@@ -14,9 +14,13 @@ module.exports = {
     path: path.resolve("./dist")
   },
   devServer: {
+    host: "192.168.0.144",
     overlay: true,
-    stats: "errors-only"
+    stats: "errors-only",
     // TODO: 여기에 api 서버 프록싱 설정을 추가하세요
+    proxy: {
+      '/api':'http://192.168.0.144:8082'
+    },
   },
   module: {
     rules: [
